@@ -24,7 +24,7 @@ interface Seller {
 
 export default function SellerPage() {
   const params = useParams()
-  const sellerUsername = params.id as string
+  const sellerId = params.id as string
 
   const [seller, setSeller] = useState<Seller | null>(null)
   const [loading, setLoading] = useState(true)
@@ -34,7 +34,7 @@ export default function SellerPage() {
     const fetchSeller = async () => {
       try {
         const supabase = getSupabase()
-        const { data, error } = await supabase.from("sellers").select("*").eq("username", sellerUsername).single()
+        const { data, error } = await supabase.from("sellers").select("*").eq("username", sellerId).single()
 
         if (error) throw error
 
@@ -48,7 +48,7 @@ export default function SellerPage() {
     }
 
     fetchSeller()
-  }, [sellerUsername])
+  }, [sellerId])
 
   if (loading) {
     return (
