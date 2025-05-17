@@ -34,8 +34,8 @@ export default function SellerDetailPage() {
   const t = language === "zh" ? translations.zh : language === "ro" ? translations.ro : translations.en
 
   useEffect(() => {
-    if (params?.id) {
-      const sellerName = Array.isArray(params.id) ? params.id[0] : params.id
+    if (params?.name) {
+      const sellerName = Array.isArray(params.name) ? params.name[0] : params.name
 
       // Find seller by name (converted to lowercase for case-insensitive matching)
       const fetchedSeller = getSellerByUsername(sellerName.toLowerCase())
